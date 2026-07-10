@@ -1,56 +1,99 @@
-# InternGrow Intelligent Sudoku Solver & Generator
+# InternGrow_SudokuSolverGenerator
 
-Sudoku Solver and Puzzle Generator built in C++ as part of the **InternGrow C++ Programming Track (Task 3)**.
+## 📌 Project Title
+Intelligent Sudoku Solver & Generator
 
-## 📋 Overview
-This console-based application represents a Sudoku grid as a 9x9 2D array and uses a **recursive backtracking algorithm** to solve puzzles with empty cells. It also includes an integrated **puzzle generator engine** that creates unique, unsolved Sudoku configurations based on selectable difficulty levels.
+## 📖 Description
+A C++ console application that represents a Sudoku grid as a 2D array and
+uses **recursive backtracking** to solve any valid 9x9 puzzle you provide.
 
-## ✨ Features
-- **2D Grid Representation**: Sudoku board stored as a 9x9 array
-- **Recursive Backtracking Solver**: Automatically fills empty cells by trying valid numbers and backtracking when a dead end is reached
-- **Validation Logic**: Checks row, column, and 3x3 sub-box constraints before placing any number
-- **Manual Puzzle Input**: Users can enter their own puzzle (using 0 for empty cells) and have it solved
-- **Formatted Board Display**: Clean grid printout with sub-box separators
+### 🚀 Upgrade Feature — Puzzle Generator Engine
+Generates brand-new, **unsolved Sudoku puzzles** with a **guaranteed unique
+solution**, at three difficulty settings:
+| Difficulty | Cells Removed | Approx. Clues Remaining |
+|-----------|---------------|--------------------------|
+| Easy      | 35            | ~46                      |
+| Medium    | 45            | ~36                      |
+| Hard      | 54            | ~27                      |
 
-### 🚀 Upgrade Feature: Puzzle Generator Engine
-Generates unique, unsolved Sudoku puzzles at three difficulty levels:
-- **Easy** – 46 clues remaining (35 cells removed)
-- **Medium** – 36 clues remaining (45 cells removed)
-- **Hard** – 27 clues remaining (54 cells removed)
+The generator builds a full valid solution first (via backtracking, seeded
+by randomly filled diagonal boxes), then removes cells one at a time —
+checking after each removal that the puzzle **still has exactly one
+solution** — so every generated puzzle is solvable and unambiguous.
 
-The generator works by:
-1. Filling a complete, valid Sudoku solution using randomized backtracking
-2. Removing cells one at a time based on the selected difficulty
-3. Verifying after each removal that the puzzle still has a **unique solution** (using a solution-counting check), ensuring every generated puzzle is solvable in exactly one way
+## 🛠️ Tech Stack
+- Language: C++ (C++17)
+- Core Algorithm: Recursive backtracking (constraint satisfaction)
 
-## 💻 How to Run
-
-### Compile
-```bash
-g++ -std=c++17 InternGrow_SudokuSolver.cpp -o sudoku_solver
+## 📂 File Structure
+```
+InternGrow_SudokuSolverGenerator/
+├── Task3_Sudoku_Solver_Generator.cpp
+└── README.md
 ```
 
-### Run
+## ⚙️ How to Compile & Run
 ```bash
-./sudoku_solver
+g++ -std=c++17 -o Sudoku Task3_Sudoku_Solver_Generator.cpp
+./Sudoku
 ```
-(On Windows: `sudoku_solver.exe`)
+On Windows (MinGW):
+```bash
+g++ -std=c++17 -o Sudoku.exe Task3_Sudoku_Solver_Generator.cpp
+Sudoku.exe
+```
 
-## 📖 Usage
-1. **Enter Your Own Puzzle & Solve** – Input a 9x9 grid (0 for blanks) and get the solved solution
-2. **Generate a New Puzzle** – Choose Easy, Medium, or Hard difficulty to get a fresh unsolved puzzle
-3. **Solve the Currently Generated Puzzle** – Solve the puzzle generated in option 2
+## ▶️ How to Use
+On launch you'll see a menu:
+```
+1. Solve my own Sudoku puzzle
+2. Generate a new puzzle (Easy/Medium/Hard)
+3. Exit
+```
 
-## 🧩 Tech Stack
-- **Language**: C++ (C++17)
-- **Concepts Used**: 2D Arrays, Recursion, Backtracking Algorithms, STL (vector), `<random>` for shuffling, Object-Oriented Design
+**Option 1 — Solve**
+- Enter your 9x9 grid row by row, space-separated, using `0` for empty
+  cells.
+- The program prints your input grid, then the fully solved grid (or a
+  message if no solution exists).
 
-## 📌 Built For
-**InternGrow C++ Programming Track** — Module 1, Task 3
-Contact: interngrow.official@gmail.com
+**Option 2 — Generate**
+- Choose a difficulty level (Easy / Medium / Hard).
+- The program prints a new unsolved puzzle.
+- Optionally view the full solution on demand.
+
+## 📊 Sample Output
+```
+===== Intelligent Sudoku Solver & Generator =====
+1. Solve my own Sudoku puzzle
+2. Generate a new puzzle (Easy/Medium/Hard)
+3. Exit
+Choose an option: 2
+Select difficulty:
+1. Easy
+2. Medium
+3. Hard
+Choice: 1
+
+Generating a Easy puzzle...
+
+Your new Easy Sudoku puzzle:
+5 3 . | . 7 . | . . .
+6 . . | 1 9 5 | . . .
+. 9 8 | . . . | . 6 .
+------+-------+------
+8 . . | . 6 . | . . 3
+4 . . | 8 . 3 | . . 1
+7 . . | . 2 . | . . 6
+------+-------+------
+. 6 . | . . . | 2 8 .
+. . . | 4 1 9 | . . 5
+. . . | . 8 . | . 7 9
+```
 
 ## 👤 Author
-Samreen Javeed
+InternGrow C++ Programming Track — Module 1, Task 3
 
 ## 📄 License
-This project was built for educational purposes as part of the InternGrow internship program.
+This project was developed as part of the InternGrow internship program for
+educational purposes.
